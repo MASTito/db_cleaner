@@ -1,0 +1,68 @@
+{include="header"}
+<script type="text/javascript">
+
+$(document).ready( function() {	
+    $('#boton_borrar').on('click', function (){
+    	doubleconfirmation();
+    });
+});
+
+function doubleconfirmation() 
+{
+    var first_confirm = confirm('Se eliminaran esos datos de la base de datos. ¿Esta seguro?');
+    if (first_confirm) 
+    {
+    	var second_confirm = confirm('ESTA OPERACIÓN NO ES REVERSIBLE. ¿Está COMPLETAMENTE seguro?');
+    	if (second_confirm) 
+    	{
+    		window.location.href = '{$fsc->url()}&eliminardatos=1';
+    	}
+    }    
+}
+</script>
+
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-sm-12">
+         <div>
+            <h1>
+               <span class="btn-group">
+                  <a class="btn btn-xs btn-default" href="{$fsc->url()}" title="Recargar la página">
+                     <span class="glyphicon glyphicon-refresh"></span>
+                  </a>
+                  {if="$fsc->page->is_default()"}
+                  <a class="btn btn-xs btn-default active" href="{$fsc->url()}&amp;default_page=FALSE" title="desmarcar como página de inicio">
+                     <span class="glyphicon glyphicon-home"></span>
+                  </a>
+                  {else}
+                  <a class="btn btn-xs btn-default" href="{$fsc->url()}&amp;default_page=TRUE" title="marcar como página de inicio">
+                     <span class="glyphicon glyphicon-home"></span>
+                  </a>
+                  {/if}
+               </span>
+         		Borrar datos DB
+         	</h1>
+         	<br/>
+            <p class="help-block" style="text-align: center">
+               Se eliminarán por completo los 
+               siguientes datos: artículos, familias, fabricantes, facturas, albaranes, pedidos, presupuestos, 
+               clientes, proveedores y asientos.
+            </p>
+            <br/>
+            <p class="help-block" style="text-align: center">
+               <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;
+               PROCEDA CON PRECAUCIÓN
+               <br/>
+               <br/>
+               <br/>
+               <button id="boton_borrar" type="button" class="btn btn-default" aria-label="Left Align">
+  					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+  					BORRAR DATOS
+				</button>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+{include="footer"}

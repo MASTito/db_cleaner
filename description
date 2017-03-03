@@ -1,0 +1,2 @@
+Plugin para limpiar los datos de la base de datos: Artículos, familias, fabricantes, facturas, albaranes, pedidos, presupuestos, clientes, proveedores y asientos.
+<br/>Accesible desde Admin &gt; db_cleaner
