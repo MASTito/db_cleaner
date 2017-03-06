@@ -125,45 +125,6 @@ class clean_albaran_proveedor extends FacturaScripts\model\albaran_proveedor
 	}
 }
 
-class clean_pedido_cliente extends FacturaScripts\model\pedido_cliente
-{
-	public function __construct()
-	{
-		parent::__construct();
-	}
-
-	public function delete_all()
-	{
-		return $this->db->exec("DELETE FROM ".$this->table_name.";");
-	}
-}
-
-class clean_pedido_proveedor extends FacturaScripts\model\pedido_proveedor
-{
-	public function __construct()
-	{
-		parent::__construct();
-	}
-
-	public function delete_all()
-	{
-		return $this->db->exec("DELETE FROM ".$this->table_name.";");
-	}
-}
-
-class clean_presupuesto_cliente extends FacturaScripts\model\presupuesto_cliente
-{
-	public function __construct()
-	{
-		parent::__construct();
-	}
-
-	public function delete_all()
-	{
-		return $this->db->exec("DELETE FROM ".$this->table_name.";");
-	}
-}
-
 class clean_cliente extends FacturaScripts\model\cliente
 {
 	public function __construct()
