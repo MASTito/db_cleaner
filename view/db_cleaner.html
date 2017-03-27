@@ -9,15 +9,23 @@ $(document).ready( function() {
 
 function doubleconfirmation() 
 {
-    var first_confirm = confirm('Se eliminaran esos datos de la base de datos. ¿Esta seguro?');
-    if (first_confirm) 
-    {
-    	var second_confirm = confirm('ESTA OPERACIÓN NO ES REVERSIBLE. ¿Está COMPLETAMENTE seguro?');
-    	if (second_confirm) 
-    	{
-    		window.location.href = '{$fsc->url()}&eliminardatos=1';
-    	}
-    }    
+   bootbox.confirm({
+      message: 'Se eliminaran esos datos de la base de datos. ¿Esta seguro?',
+      title: '<b>Atención</b>',
+      callback: function(result) {
+         if (result) {
+            bootbox.confirm({
+               message: 'ESTA OPERACIÓN NO ES REVERSIBLE. ¿Está COMPLETAMENTE seguro?',
+               title: '<b>Atención</b>',
+               callback: function(result) {
+                  if (result) {
+                     window.location.href = '{$fsc->url()}&eliminardatos=1';
+                  }
+               }
+            });
+         }
+      }
+   });
 }
 </script>
 
